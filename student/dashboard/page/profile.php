@@ -34,22 +34,12 @@ $duration_to = $get['duration_to'];
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="../../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="../../../plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="../../../plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="../../../plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -64,15 +54,10 @@ $duration_to = $get['duration_to'];
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../index.php" class="nav-link">Home</a>
       </li>
-     
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-    
-      <!-- Notifications Dropdown Menu -->
-     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -89,7 +74,6 @@ $duration_to = $get['duration_to'];
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-    
       </div>
 
       <!-- SidebarSearch Form -->
@@ -140,11 +124,8 @@ $duration_to = $get['duration_to'];
           </li>
           <li class="nav-item">
             <a href="universitysupervisors.php" class="nav-link">
-         <i class="nav-icon fas fa-users"></i>
-              <p>
-                Assigned Supervisor
-       
-              </p>
+              <i class="nav-icon fas fa-users"></i>
+              <p>Assigned Supervisor</p>
             </a>
           </li>
         </ul>
@@ -166,7 +147,7 @@ $duration_to = $get['duration_to'];
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Profile</li>
+              <li class="breadcrumb-item active">Profile</li>
             </ol>
           </div>
         </div>
@@ -193,7 +174,7 @@ $duration_to = $get['duration_to'];
                 </div>
                 <div class="text-center">
                   <h5 class="h3">
-                    <?php echo $fname, $lname; ?><span class="font-weight-light"></span>
+                    <?php echo $fname . " " . $lname; ?><span class="font-weight-light"></span>
                   </h5>
                   <div class="h5 font-weight-300">
                     <h5 class="h3">
@@ -209,7 +190,7 @@ $duration_to = $get['duration_to'];
               <div class="card-header">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h5 class="mb-0">Personal Information </h5>
+                    <h5 class="mb-0">Personal Information</h5>
                   </div>
                   <div class="col-4 text-right"></div>
                 </div>
@@ -304,17 +285,17 @@ $duration_to = $get['duration_to'];
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
           $firstname = $_POST['firstname'];
           $lastname = $_POST['lastname'];
-          $adm = $_POST['admission number'];
+          $adm = $_POST['adm'];
           $course = $_POST['course'];
-          $company_name = $_POST['company_name'];
-          $company_address = $_POST['company_address'];
+          $company_name = $_POST['company_name2'];
+          $company_address = $_POST['company_address2'];
           $department = $_POST['department2'];
-          $supervisor_name = $_POST['supervisor_name'];
-          $duration_from = $_POST['duration_from'];
-          $duration_to = $_POST['duration_to'];
+          $supervisor_name = $_POST['supervisor_name2'];
+          $duration_from = $_POST['duration_from2'];
+          $duration_to = $_POST['duration_to2'];
       
           // Update SQL Query
-          $update_sql = "UPDATE students SET fname='$firstname', lname='$lastname', email='$email',course='$course',company_name='$company_name', company_address='$company_address',department='$department',supervisor_name='$supervisor_name',duration_from='$duration_from',duration_to='$duration_to' WHERE admission number='$adm'";
+          $update_sql = "UPDATE students SET fname='$firstname', lname='$lastname', email='$email', course='$course', company_name='$company_name', company_address='$company_address', department='$department', supervisor_name='$supervisor_name', duration_from='$duration_from', duration_to='$duration_to' WHERE adm='$adm'";
           $update_query = mysqli_query($conn, $update_sql);
       
           if ($update_query) {
@@ -322,9 +303,8 @@ $duration_to = $get['duration_to'];
           } else {
               echo "<script>alert('Unable to update profile');</script>";
           }
-      }
-      ?>
-      
+        }
+        ?>
       </div>
       <!-- Footer -->
       <footer class="footer pt-0"></footer>
@@ -333,45 +313,18 @@ $duration_to = $get['duration_to'];
   </div>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+   
+<!-- Control sidebar content goes here -->
+</aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="../../../plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- Bootstrap 4 -->
 <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../../../plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="../../../plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="../../../plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../../../plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="../../../plugins/moment/moment.min.js"></script>
-<script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="../../../plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../../dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../../dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../../../dist/js/pages/dashboard.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 </body>
 </html>

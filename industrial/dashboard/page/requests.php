@@ -193,6 +193,7 @@ include("../sessions.php");
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>Student Email</th>
                     <th>Request</th>
                     <th>From Date</th>
                     <th>To Date</th>
@@ -209,11 +210,13 @@ $sql = "SELECT * FROM leave_request WHERE accepted='0'";
 $query = mysqli_query($conn,$sql);
 while($get = mysqli_fetch_array($query)){
   $id    =   $get['id'];
+  $student_email= $get['student_email'];
 $from_date = $get['from_date'];
 $to_date = $get['to_date'];
 $request = $get['request'];
 $accepted = $get['accepted'];
 echo '<tr>
+   <td>'.$student_email.'</td>
   <td>'.$request.'</td>
  <td>'.$from_date.'</td>
  <td>'.$to_date.'</td>

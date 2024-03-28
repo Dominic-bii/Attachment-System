@@ -112,28 +112,20 @@ $conn = DBconnect();
             </a>
           </li>
     <li class="nav-item">
-            <a href="logbook.php" class="nav-link ">
+            <a href="logbooks.php" class="nav-link ">
          <i class="nav-icon fas fa-edit"></i>
               <p>
-                 Logbook
+                 Logbooks
        
               </p>
             </a>
           </li>
-        <li class="nav-item">
-            <a href="feedback.php" class="nav-link">
-         <i class="nav-icon fas fa-table"></i>
-              <p>
-                 View Feedbacks
-       
-              </p>
-            </a>
           </li>
-               <li class="nav-item">
-            <a href="request.php" class="nav-link">
+              <li class="nav-item">
+            <a href="marked_logbooks.php" class="nav-link">
          <i class="nav-icon fas fa-plus-square"></i>
               <p>
-                Request Leave
+                 Assessments
        
               </p>
             </a>

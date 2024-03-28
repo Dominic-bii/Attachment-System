@@ -225,7 +225,7 @@ $department = $get['department'];
                       
                     <?php
 
-$sql = "SELECT * FROM students WHERE department='$department' ";
+$sql = "SELECT * FROM students WHERE supervisor_name='$email' ";
 $query = mysqli_query($conn,$sql);
 while($get = mysqli_fetch_array($query)){
 $id    =   $get['id'];

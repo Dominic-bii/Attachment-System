@@ -37,7 +37,7 @@ session_destroy();
 					<div class="card-body">
 						<form action="actions/authenticate.php" method="post">
 						<img src="assets/images/blog_2.jpg" alt="" class="img-fluid mb-4" style="border-radius: 50%; width: 180px;">
-						<h4 class="mb-3 f-w-400">Supervisor Signin</h4>
+						<h4 class="mb-3 f-w-400">University Supervisor Signin</h4>
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Email">Email Address</label><br>
 							<input type="text" class="form-control" name="email"  placeholder="" required>

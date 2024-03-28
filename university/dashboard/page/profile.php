@@ -13,7 +13,6 @@ $id    =   $get['id'];
 $supervisor_fname = $get['supervisor_fname'];
 $supervisor_lname = $get['supervisor_lname'];
 $email = $get['email'];
-$course = $get['course'];
 $university_name = $get['university_name'];
 $university_address = $get['university_address'];
 $department = $get['department'];
