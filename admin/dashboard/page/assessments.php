@@ -205,7 +205,6 @@
                     <th>Date</th>
                     <th>Status</th>
                     <th>View Marks</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>

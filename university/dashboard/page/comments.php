@@ -1,12 +1,14 @@
 <?php
-include("../sessions.php");
+
+include("../../../includes/dbconnect.php");
+$conn = DBconnect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Industrial Supervisor</title>
+  <title>University Supervisor</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -42,19 +44,14 @@ include("../sessions.php");
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../index.php" class="nav-link">Home</a>
       </li>
-     
     </ul>
-
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-    
       <!-- Notifications Dropdown Menu -->
-     
     </ul>
   </nav>
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -68,7 +65,7 @@ include("../sessions.php");
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-     
+ 
       </div>
 
       <!-- SidebarSearch Form -->
@@ -88,7 +85,7 @@ include("../sessions.php");
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+    <li class="nav-item menu-open">
             <a href="../index.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -98,8 +95,9 @@ include("../sessions.php");
             </a>
   
           </li>
+          
           <li class="nav-item">
-            <a href="profile.php" class="nav-link ">
+            <a href="profile.php" class="nav-link">
                <i class="nav-icon fas fa-user"></i>
               <p>
                  Profile
@@ -107,43 +105,26 @@ include("../sessions.php");
               </p>
             </a>
           </li>
-    <li class="nav-item">
-            <a href="logbooks.php" class="nav-link ">
+
+          <li class="nav-item">
+            <a href="logbooks.php" class="nav-link">
          <i class="nav-icon fas fa-edit"></i>
               <p>
-                 Logbooks
+                logbooks
        
               </p>
             </a>
           </li>
-        <li class="nav-item">
-            <a href="assess.php" class="nav-link">
-         <i class="nav-icon fas fa-table"></i>
-              <p>
-                 Assess Students
-       
-              </p>
-            </a>
-          </li>
-               <li class="nav-item">
-            <a href="requests.php" class="nav-link">
+              <li class="nav-item">
+            <a href="marked_logbooks.php" class="nav-link">
          <i class="nav-icon fas fa-plus-square"></i>
               <p>
-                Leave Requests
+                 Assessments
        
               </p>
             </a>
           </li>
-                     <li class="nav-item">
-            <a href="marked_logbooks.php" class="nav-link active">
-         <i class="nav-icon fas fa-plus-circle"></i>
-              <p>
-                Assessments
-       
-              </p>
-            </a>
-          </li>
-                     <li class="nav-item">
+         <li class="nav-item">
             <a href="students.php" class="nav-link">
          <i class="nav-icon fas fa-users"></i>
               <p>
@@ -153,7 +134,7 @@ include("../sessions.php");
             </a>
           </li>
           <li class="nav-item">
-            <a href="comments.php" class="nav-link">
+            <a href="comments.php" class="nav-link active">
          <i class="nav-icon fas fa-plus-square"></i>
               <p>
                 Comments
@@ -169,6 +150,7 @@ include("../sessions.php");
   </aside>
 
 
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -176,16 +158,16 @@ include("../sessions.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Logbooks</h1>
+            <h1>Comments</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Logbooks</li>
+              <li class="breadcrumb-item active">Comments</li>
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
     <!-- Main content -->
@@ -195,70 +177,44 @@ include("../sessions.php");
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Logbooks</h3>
+                <h3 class="card-title">Comments</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>Parent Email</th>
                     <th>Student Email</th>
-                    <th>Attendance</th>
-                    <th>Punctuality</th>
-                    <th>Skills</th>
-                  
-                    <th>Creativity</th>
-                    <th>Planning</th>
-                   
-                    <th>Feedback</th>
+                    <th>Comment Date</th>
                     <th>Comment</th>
-                  
-                     <th>Action</th>
+                    <th>Action</th>
+        
                   </tr>
                   </thead>
                   <tbody>
                       
                     <?php
-include("../../../includes/dbconnect.php");
 
-$conn = DBconnect();
-$sql = "SELECT * FROM assess_students";
+$sql = "SELECT * FROM comments";
 $query = mysqli_query($conn,$sql);
 while($get = mysqli_fetch_array($query)){
-  $id    =   $get['id'];
+$id    =   $get['id'];
+$parent_email = $get['parent_email'];
 $student_email = $get['student_email'];
-$attendance = $get['attendance'];
-$punctuality = $get['punctuality'];
-$skills = $get['skills'];
-$office_applications = $get['office_applications'];
-$technical_applications = $get['technical_applications'];
-$specialisation = $get['specialisation'];
-$scientific_knowledge = $get['scientific_knowledge'];
-$ability_to_learn = $get['ability_to_learn'];
-$acceptability_to_colleagues = $get['acceptability_to_colleagues'];
-$creativity = $get['creativity'];
-$planning = $get['planning'];
-$time = $get['time_marks'];
-$date = $get['date'];
-$feedback = $get['feedback'];
-$comment = $get['comment'];
+$comment_date = $get['comment_date'];
+$comment_text = $get['comment_text'];
+
 echo '<tr>
+ <td>'.$parent_email.'</td>
  <td>'.$student_email.'</td>
- <td>'.$attendance.'</td>
- <td>'.$punctuality.'</td>
- <td>'.$skills.'</td>
- <td>'.$creativity.'</td>
- <td>'.$planning.'</td>
+ <td>'.$comment_date.'</td>
+ <td>'.$comment_text.'</td>
 
- <td>'.$feedback.'</td>
- <td>'.$comment.'</td>
-<td>
-<div class="btn-group btn-group-sm">
-
-<a href="./delete_marked_logbook.php?log_id='.$id.'" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-</div>
-</td>
-</tr>';
+ <td>
+ <button class="btn btn-danger btn-sm" onclick="deletecomment(' . $id . ')">Delete</button>
+              </td>
+ </tr>';
 
 }
 
@@ -343,6 +299,16 @@ echo '<tr>
 <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  function deletecomment(commentId) {
+    // Confirm deletion with the user
+    if (confirm("Are you sure you want to delete this comment?")) {
+      // Redirect to the delete_comment.php script with the parent ID
+      window.location.href = 'delete_comment.php?id=' + commentId;
+    }
+  }
+</script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

@@ -8,7 +8,7 @@ $supervisor_email=$_SESSION["email"];
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Supervisor</title>
+  <title>University Supervisor</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -132,6 +132,15 @@ $supervisor_email=$_SESSION["email"];
          <i class="nav-icon fas fa-users"></i>
               <p>
                 Assigned Students
+       
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="comments.php" class="nav-link">
+         <i class="nav-icon fas fa-plus-square"></i>
+              <p>
+                Comments
        
               </p>
             </a>
