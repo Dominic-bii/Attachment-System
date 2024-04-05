@@ -293,7 +293,11 @@ $phone = $get['phone'];
                         <input value="<?php echo$university_address; ?>"  class="form-control"  type="text" >
                       </div>
                     </div>
-             
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-phone">phone</label>
+                        <input type="text" id="input-phone" class="form-control" value="<?php echo$phone; ?>" >
+                      </div>
+                    </div>
                     </div>
                   </div>
                <div class="pl-lg-4">

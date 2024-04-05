@@ -17,7 +17,7 @@ $email = $get['email'];
 $instituition_name = $get['company_name'];
 $instituition_address = $get['company_address'];
 $department  = $get['department'];
-
+$phone = $get['phone'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -311,7 +311,11 @@ $department  = $get['department'];
                         <input value="<?php echo$instituition_address; ?>"  class="form-control"  type="text" >
                       </div>
                     </div>
-             
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-phone">phone</label>
+                        <input type="text" id="input-phone" class="form-control" value="<?php echo$phone; ?>" >
+                      </div>
+                    </div>
                     </div>
                   </div>
               <div class="pl-lg-4">
